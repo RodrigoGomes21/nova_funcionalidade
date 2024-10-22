@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Times</title>
+</head>
+<body>
+    <h1>Lista de Times</h1>
+    <a href="{% url 'cadastrar_time' %}">Cadastrar Novo Time</a>
+    <ul>
+        {% for time in times %}
+            <li>{{ time.nome }} - {{ time.modalidade }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

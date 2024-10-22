@@ -85,6 +85,7 @@ class Time(models.Model):
     
     nome = models.CharField(max_length=100)
     modalidade = models.CharField(max_length=50, choices=MODALIDADES)
+    criacao = models.DateTimeField(auto_now_add=True)  # Adicionando o campo de data de criação
 
     def __str__(self):
         return f'{self.nome} - {self.modalidade}'

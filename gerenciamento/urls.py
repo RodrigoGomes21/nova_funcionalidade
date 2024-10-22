@@ -8,5 +8,6 @@ urlpatterns = [
 
 urlpatterns = [
     #essa é a rota do cadastro de times
-    path('admin/time/cadastrar_time/', views.cadastrar_time, name='cadastrar_time'),
+    path('times/cadastrar/', views.cadastrar_time, name='cadastrar_time'),
+    path('times/', views.lista_times, name='lista_times'),
 ]

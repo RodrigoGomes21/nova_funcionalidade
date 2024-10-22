@@ -3,6 +3,7 @@ from django.shortcuts import render
 from .models import Participante
 from .forms import TimeForm
 from django.shortcuts import render, redirect
+from gerenciamento.models import Time
 
 def index(request):
     return HttpResponse("Hello, this is the index page of gerenciamento.")
@@ -40,3 +41,8 @@ def cadastrar_time(request):
         form = TimeForm()
     
     return render(request, 'usuarios/cadastrar_time.html', {'form': form})
+
+
+def lista_times(request):
+    times = Time.objects.all()
+    return render(request, 'usuarios/lista_times.html', {'times': times})
