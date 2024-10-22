@@ -1,11 +1,19 @@
 from django.contrib import admin
-from .models import Bolsista, Participante, Frequencia
+from .models import Bolsista, Participante, Frequencia,Time
 
 class FrequenciaAdmin(admin.ModelAdmin):
     list_display = ('bolsista', 'mes', 'frequencia_entregue', 'frequencia_participantes_entregue')
     list_filter = ('mes', 'bolsista',)
     search_fields = ['bolsista__nome']
     list_editable = ('frequencia_entregue', 'frequencia_participantes_entregue')
+    
+    
+
+@admin.register(Time)
+class TimeAdmin(admin.ModelAdmin):
+    list_display = ['nome', 'criacao'] 
+
+
 
 class ParticipanteAdmin(admin.ModelAdmin):
     list_display = ('nome', 'modalidade', 'curso')  # Adiciona as colunas visíveis na listagem
