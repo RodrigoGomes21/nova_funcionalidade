@@ -80,12 +80,22 @@ class Time(models.Model):
         ('basquete', 'Basquete'),
         ('futsal', 'Futsal'),
         ('handebol', 'Handebol'),
-        ('volei', 'Volei')
+        ('volei', 'Vôlei'),
     ]
     
-    nome = models.CharField(max_length=100)
+    nome = models.CharField(max_length=100, verbose_name="Nome do Time")
     modalidade = models.CharField(max_length=50, choices=MODALIDADES)
-    criacao = models.DateTimeField(auto_now_add=True)  # Adicionando o campo de data de criação
+    criacao = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'{self.nome} - {self.modalidade}'
+
+class Participante(models.Model):
+    nome = models.CharField(max_length=100)
+    time = models.CharField(max_length=100, default='valor_padrao')
+    modalidade = models.CharField(max_length=50, choices=Time.MODALIDADES)
+    curso = models.CharField(max_length=100)  # Exemplo de campo 'curso'
+    competidor = models.BooleanField(default=False)  # Exemplo de campo 'competidor'
+
+    def __str__(self):
+        return self.nome
